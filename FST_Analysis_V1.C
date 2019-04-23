@@ -1,3 +1,8 @@
+////////////////////////////////////
+//This is the current working Full System Test Analysis script, update 23/04/19.
+// H Birch harveyjohnbirch@gmail.com 
+////////////////////////////////////
+
 #include "TH2F.h"
 #include "TH1F.h"
 #include "TCanvas.h"
@@ -24,11 +29,6 @@
 #include "TRandom.h"
 #include "TLine.h"
 
-//Version 1 push to git.
-
-
-// for 20, 25, 30, 35, 40, 45 ns trigger widths
-
 using namespace std;
 
 Double_t fitf_TWNPH(Double_t *x,Double_t *par);
@@ -48,7 +48,7 @@ void FST_Analysis_V1(char* filename, int board)
   TFile *_file0 = TFile::Open(filename);
   TTree* tree = (TTree*)_file0->Get("tree");
 
-  const float maxNph = 1.0e6;
+  const float SetMaxNph = 1.0e6;
   //const float maxPD = 2.0; //was previously set to 2
 
 
@@ -72,6 +72,7 @@ void FST_Analysis_V1(char* filename, int board)
 
   float nphPMT[nPoints]; //number of photos at PMT
   float ernphPMT[nPoints]; // uncertainties of nphPMT
+
 
   float lnphPMT[nPoints]; //number of photos at PMT
   float erlnphPMT[nPoints]; // uncertainties of nphPMT
@@ -121,9 +122,10 @@ void FST_Analysis_V1(char* filename, int board)
     erpw[ipoint] = erpwSigma;
     if (pwMean > pwMax) pwMax = pwMean;
     //
-    TH1F* npHist = new TH1F("npHist","",10000,0.,maxNph); // number of photons in a given scan point
+    TH1F* npHist = new TH1F("npHist","",10000,0.,SetMaxNph); // number of photons in a given scan point
     tree->Draw("nph>>npHist",selection,""); 
     float nphMean=npHist->GetMean();
+   
     //
 
     /* DON'T HAVE A Photodiode READ BACK ON NEW FIRMWARE/TESTING CODE
@@ -140,7 +142,7 @@ void FST_Analysis_V1(char* filename, int board)
     */
 
     //
-    TH1F* intgHist = new TH1F("intgHist","",10000,0.,maxNph);// integral of the pmt signal which should be ~ to the number of photons but on the pulse-by-pulse basis
+    TH1F* intgHist = new TH1F("intgHist","",10000,0.,SetMaxNph);// integral of the pmt signal which should be ~ to the number of photons but on the pulse-by-pulse basis
     tree->Draw("abs(intg2)>>intgHist",selection,""); //pulseIntg -> intg2
     float intgMean=intgHist->GetMean();
     float intgSigma=intgHist->GetRMS();   // a peak width which will be used to determine the histogram range for a given scan point
@@ -163,6 +165,8 @@ void FST_Analysis_V1(char* filename, int board)
     lnphPMT[ipoint] = (nPMTMean > 0) ? TMath::Log(nPMTMean) : 0.0;
     erlnphPMT[ipoint] = (nPMTMean > 0) ?  nPMTSigma/nPMTMean : 0.0;
     cout << nphPMT[ipoint] << " " << ernphPMT[ipoint] << endl;
+
+
     char axname[50];
     sprintf(axname,"Nph for trigger set %d",trigSet);
     npmtHist->GetXaxis()->SetTitle(axname);
@@ -173,12 +177,20 @@ void FST_Analysis_V1(char* filename, int board)
     //
   }
   char plotname[30];
-  sprintf(plotname,"nphPB%02d.pdf",board);
-  c1->Print(plotname);    // a plot with distributions for all the scan points
+  //sprintf(plotname,"nphPB%02d.pdf",board);
+  //c1->Print(plotname);    // a plot with distributions for all the scan points
   //
   sprintf(plotname,"nphPB%02d.png",board);
   c1->Print(plotname);    // a plot with distributions for all the scan points    
   //
+
+  float nph = nphPMT[0];
+  for(int i = 1; i < nPoints; i++)
+    if ( nphPMT[i] > nph )
+      nph = nphPMT[i];
+  cout << "Max nph in the nphPMT array is: " << nph << endl; 
+  float maxNph = nph + 200;
+
 
   //
   //pulse width VS number of photons
@@ -197,13 +209,48 @@ void FST_Analysis_V1(char* filename, int board)
   pwVSnph->SetMarkerStyle(20);
   pwVSnph->Draw("P same");
   //
-  sprintf(plotname,"PulseWidthVSnphPB%02d.pdf",board);
+  sprintf(plotname,"PulseWidthVSnphPB%02d.root",board);
   c2->Print(plotname);
   //
   sprintf(plotname,"PulseWidthVSnphPB%02d.png",board);
   c2->Print(plotname);
   //
+  
+  //nph VS Trigger Width
+  TGraphErrors* twVSnph = new TGraphErrors(nPoints,nphPMT,trigW,ernphPMT,ertrigW);
+  sprintf(titlename,"PB%02d",board);
+  //
+  TCanvas *c5 = new TCanvas("c5","c5",10,65,700,500);
+  c5->SetGridy();
+  //c3->SetLogx();
+  //c3->Range(1,0,maxNph,65);
+  TH2F* trigWVSnphPMT = new TH2F("trigWVSnphPMT",titlename,1000,1,maxNph,65,0,65);
+  trigWVSnphPMT->SetStats(kFALSE);
+  trigWVSnphPMT->GetXaxis()->SetTitle("Number of Photons per pulse");
  
+  trigWVSnphPMT->GetYaxis()->SetTitle("Trigger Width (ns)");
+
+  trigWVSnphPMT->Draw();
+  twVSnph->SetMarkerStyle(20);
+  // 
+  //TF1 *fitf = new TF1("fitf",fitf_TWNPH,1.,TMath::Log(maxNph),3); 
+  //fitf->SetParameters(20,0.15,0.008); //(par[0],par[1],par[2]) 
+  //
+  //twVSlnph->Fit(fitf);
+  twVSnph->Draw("P same");
+  //
+  //gStyle->SetStatX(0.55);
+  //gStyle->SetStatY(0.9);
+  //
+  sprintf(plotname,"TriggerWidthVSnphPB%02d.png",board);
+  c5->Print(plotname);
+  //
+  sprintf(plotname,"TriggerWidthVSnphPB%02d.root",board);
+  c5->Print(plotname);
+ 
+
+
+ /*
   //Natural Log of nph VS Trigger Width
   TGraphErrors* twVSlnph = new TGraphErrors(nPoints,lnphPMT,trigW,erlnphPMT,ertrigW);
   sprintf(titlename,"PB%02d",board);
@@ -214,7 +261,7 @@ void FST_Analysis_V1(char* filename, int board)
   //c3->Range(1,0,maxNph,65);
   TH2F* trigWVSlnphPMT = new TH2F("trigWVSnphPMT",titlename,1000,1,TMath::Log(maxNph),65,0,65);
   trigWVSlnphPMT->SetStats(kFALSE);
-  trigWVSlnphPMT->GetXaxis()->SetTitle("Log Number of Photons per pulse");
+  trigWVSlnphPMT->GetXaxis()->SetTitle("Natural Log Number of Photons per pulse");
   trigWVSlnphPMT->GetYaxis()->SetTitle("Trigger Width (ns)");
   trigWVSlnphPMT->Draw();
   twVSlnph->SetMarkerStyle(20);
@@ -229,14 +276,15 @@ void FST_Analysis_V1(char* filename, int board)
   gStyle->SetStatY(0.9);
   //
   c3->Update();
-  sprintf(plotname,"TWVSlnphPB%02d.pdf",board);
-  c3->Print(plotname);
+  //sprintf(plotname,"TWVSlnphPB%02d.pdf",board);
+  //c3->Print(plotname);
   //
-  sprintf(plotname,"TWVSlnphPB%02d.png",board);
-  c3->Print(plotname);
-  //
+  //sprintf(plotname,"TWVSlnphPB%02d.png",board);
+  //c3->Print(plotname);
 
-  //
+  */
+
+  /*
   //Natural Log of nph VS Trigger Width with residuals
   TCanvas *c4 = new TCanvas("c4","c4",10,65,700,500);
   TPad *pad1 = new TPad("pad1", "pad1", 0, 0.3, 1, 1.0);
@@ -297,17 +345,17 @@ void FST_Analysis_V1(char* filename, int board)
   //
   c4->Update();
   //
-  sprintf(plotname,"twVSlnph_with_residuals_PB%02d.pdf",board);
-  c4->Print(plotname);
+  //sprintf(plotname,"twVSlnph_with_residuals_PB%02d.pdf",board);
+  //c4->Print(plotname);
   //
-  sprintf(plotname,"twVSlnph_with_residuals_PB%02d.png",board);
-  c4->Print(plotname);
+  //sprintf(plotname,"twVSlnph_with_residuals_PB%02d.png",board);
+  //c4->Print(plotname);
   //
-  
+  */
 
 
 
-  //
+  /*
   cout << "Number of Photons" << endl;
   for (int i = 0; i < nPoints; i++){
     cout << i << " " << lnphPMT[i] << endl;
@@ -322,7 +370,7 @@ void FST_Analysis_V1(char* filename, int board)
   for (int i = 0; i < nPoints; i++){
     cout << i << " " << trigWres[i] << endl;
   }
-
+  */  
 
   
 }
