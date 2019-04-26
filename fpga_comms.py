@@ -116,10 +116,17 @@ def set_PD_readback_ch(PDCH): # Byte 3
     #write code here
     
     
-def set_pulse_width(width):
-    if (width < 50 and width >3):
+def set_pulse_width_large(width):
+    if (width < 50 and width >= 10):
         global register
         register[4]= int(width)
+    else:
+        print("error setting width")
+
+def set_pulse_width_small(width):
+    if (width < 64 and width >= 0):
+        global register
+        register[5]= int(width)
     else:
         print("error setting width")
 
