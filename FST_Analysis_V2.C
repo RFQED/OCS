@@ -1,10 +1,11 @@
 ////////////////////////////////////
-//This is 2nd Version of the Full System Test Analysis script, update 24/04/19.
-// Harvey Birch harveyjohnbirch@gmail.com 
+// This is 2nd Version of the Full System Test Analysis script, update 24/04/19.
+// Harvey Birch 
+// harveyjohnbirch@gmail.com 
 //
-//To run the analysis, use the following terminal command:
-//$ root -l FST_Analysis_V2.C+(\"PB99_Freq5000.0khz_Date_20190423_17_36_28.root\",99);
-//
+// To run the analysis, use the following terminal command:
+// $ root -l FST_Analysis_V2.C+(\"PB##file.root\",##);
+// REPLACE ## with respective pulser board number in file name.
 ////////////////////////////////////
 
 #include "TH2F.h"
