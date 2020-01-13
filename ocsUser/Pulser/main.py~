@@ -1,0 +1,236 @@
+###########################################################################
+#  OCS Pulser Control GUI
+#  Will Turner
+#  wturner@FNAL.GOV
+#
+# from Java -> serialPort.setSerialPortParams(9600,SerialPort.DATABITS_8,SerialPort.STOPBITS_1,SerialPort.PARITY_NONE);
+###########################################################################
+from PyQt4 import QtGui
+import sys # We need sys so that we can pass argv to QApplication
+import design # This file holds MainWindow and all design related things
+import time
+import serial
+
+class PulserGUI(QtGui.QMainWindow, design.Ui_MainWindow):
+
+    global connectionStatus
+    connectionStatus = False
+
+    global sleepTime
+    sleepTime = 0.025
+    
+    # should search for USB with the correct serial number to find the correct port
+    global ser
+    ser = serial.Serial('/dev/ttyUSB0')  # open serial port
+
+    global registers #base values
+    registers = [1,20,23,32,5,26,27,28,29,22,11]
+
+    def __init__(self):
+        # super allows access variables, methods etc in the design.py file
+        super(self.__class__, self).__init__()
+        self.setupUi(self)  # This is defined in design.py file automatically
+        self.initUI()
+
+    # if a button press occurs link it to the clicked function
+    def initUI(self):
+        self.btnConnect.clicked.connect(self.btnConnectClicked)
+        self.btnSetRegisters.clicked.connect(self.btnSetRegistersClicked)
+        self.btnRunFullScan.clicked.connect(self.runFullScan)
+        self.btnScanWidths.clicked.connect(self.runScanOverPulseWidths)
+        self.btnScanFreq.clicked.connect(self.runScanOverFreq)
+
+    def btnConnectClicked(self):
+        try:
+            ser = serial.Serial('/dev/ttyUSB0')  # open serial port
+            global connectionStatus
+            connectionStatus = True
+            print("connection status is " + str(connectionStatus))
+            self.lblConnectionStatus.setText("Connected")
+            self.txtBoxSerialPortAddr.setText(str(ser.name))
+            self.txtEditDebugMsg.append("Connection has been made via serial. Serial port = " + str(ser.name))
+        except:
+            self.lblConnectionStatus.setText("Not Connected")
+            print("Could not connect to ", ser.name)
+            self.txtEditDebugMsg.append("Connection could not be made. Check serial port settings")
+
+    def btnSetRegistersClicked(self):
+        global connectionStatus        # MUST BE CONNECTED
+        if connectionStatus == False:
+            self.txtEditDebugMsg.append("Not connected, please press connect button / check configuration")
+            return
+
+        # pull the changes from GUI to change registers -----
+        # bool set here which is changed to false if any of the settings are out of range.
+        settingsAllowed = True
+
+        # REGISTER 1 = Pulses ON/OFF
+        # if pulses  ON = 20  OFF = 21
+        if self.radioBtnPulseOnOff.isChecked():
+            registers[1] = int(20)
+            self.txtEditDebugMsg.append("Pulses ON")
+        else:
+            registers[1] = int(21)
+            self.txtEditDebugMsg.append("Pulses OFF")
+            
+        # REGISTER 2
+        # FINE INCR SCAN - CURRENTlY UNSET
+        # not sure what this does, can set the register but not knowing the outcome may be a bad idea
+
+        # REGISTER 3 = PULSE FREQ
+        # change pulse freq register from dropdown box selection. 1kHz = 31  10kHz = 40
+        registers[3]= int(30 + self.comboPulseFreq.currentIndex() + 1) #index starts at 0. 
+        self.txtEditDebugMsg.append("Pulse Frequency = " + str(self.comboPulseFreq.currentIndex() + 1) + " kHz" )
+
+        # REGISTER 4 Pulse Width
+        if (int(self.lEditInitialWidth.text()) > 50 or int(self.lEditInitialWidth.text()) < 1):
+            self.txtEditDebugMsg.append("Pulse Width set incorrectly. Max 50. Min 0 ")
+            settingsAllowed = False
+        else:
+            self.txtEditDebugMsg.append("Pulse Width = " + str(self.lEditInitialWidth.text()) + " ns")
+            registers[4]= int(self.lEditInitialWidth.text())
+ 
+
+        Reg5Int = 0
+        # Register 5 
+        if (self.cBoxCH0.isChecked()):
+            CH0_ON = int('10000000',2)
+        else:
+            CH0_ON = int('00000000',2)
+
+        if (self.cBoxCH1.isChecked()):
+            CH1_ON = int('01000000',2)
+        else:
+            CH1_ON = int('00000000',2)
+
+        if (self.cBoxCH2.isChecked()):
+            CH2_ON = int('00100000',2)
+        else:
+            CH2_ON = int('00000000',2)
+
+        if (self.cBoxCH3.isChecked()):
+            CH3_ON = int('00010000',2)
+        else:
+            CH3_ON = int('00000000',2)
+
+        if (self.cBoxCH4.isChecked()):
+            CH4_ON = int('00001000',2)
+        else:
+            CH4_ON = int('00000000',2)
+
+        if (self.cBoxCH4.isChecked()):
+            CH5_ON = int('00000100',2)
+        else:
+            CH5_ON = int('00000000',2)
+
+        if (self.cBoxCH4.isChecked()):
+            CH6_ON = int('00000010',2)
+        else:
+            CH6_ON = int('00000000',2)
+
+        if (self.cBoxCH4.isChecked()):
+            CH7_ON = int('00000001',2)
+        else:
+            CH7_ON = int('00000000',2)
+
+
+        Reg5 = int(bin(CH0_ON | CH1_ON | CH2_ON | CH3_ON | CH4_ON | CH5_ON | CH6_ON | CH7_ON ),2)
+
+        print("Now printing reg 5, bin, int then chr ")
+        print(bin(CH0_ON | CH1_ON | CH2_ON | CH3_ON | CH4_ON | CH5_ON | CH6_ON | CH7_ON ))
+        print(Reg5)
+        print(chr(Reg5))
+        registers[5] = Reg5
+        print("after printing reg 5 ")
+
+        # Try sending bytes to set FPGA registers 
+        if settingsAllowed:
+            try:
+                self.sendRegisterValues()
+                self.txtEditDebugMsg.append("Setting FPGA registers " + str(registers))
+            except:
+                self.txtEditDebugMsg.append("Error setting FPGA registers")
+        else:
+            self.txtEditDebugMsg.append("!!! Registers not set. Ensure correct settings !!!")
+        
+    def runFullScan(self):
+        for i in range(1,10):
+            registers[3]= int(i + 30) #index starts at 0.
+            self.txtEditDebugMsg.append("Pulse Frequency = " + str(i) + " kHz" )
+            # scan between initial to final widths for each freq. 1,10kHz.  
+            self.runScanOverPulseWidths()
+            time.sleep(1)
+        print("Full Scan Finished")
+
+    def runScanOverFreq(self):
+        print("Scanning over freqs")
+        initialPulseWidth = int(self.lEditInitialWidth.text())
+        if initialPulseWidth < 1 or initialPulseWidth > 50:
+            self.txtEditDebugMsg.append("Initial Pulse Width set incorrectly")
+            return
+        
+        for i in range(1,10):
+            registers[3]= int(i + 30) #index starts at 0. 
+            self.txtEditDebugMsg.append("Pulse Frequency = " + str(i) + " kHz" )
+            self.sendRegisterValues()
+            time.sleep(1)
+        print("Scan over freqs finished")
+
+
+    def runScanOverPulseWidths(self):
+        initialPulseWidth = int(self.lEditInitialWidth.text())
+        finalPulseWidth = int(self.lEditFinalWidth.text())
+
+        if initialPulseWidth < 1 or initialPulseWidth > 50:
+            self.txtEditDebugMsg.append("Initial Pulse Width set incorrectly")
+            return
+        if finalPulseWidth < 1 or finalPulseWidth > 50:
+            self.txtEditDebugMsg.append("Final Pulse Width set incorrectly")
+            return
+        if initialPulseWidth >= finalPulseWidth:
+            self.txtEditDebugMsg.append("Pulse Width settings incorrect, either the intial pulse is the same or greater than the final")
+            return
+
+        for i in range(initialPulseWidth, finalPulseWidth):
+            print("Scanning over widths " + str(i))
+            registers[4]= int(i)
+            self.sendRegisterValues()
+            time.sleep(0.1)
+
+        print("Scan over pulse widths finished")
+        # get the initial and final pulse widths from the GUI and scan over in increments of X (is that a textfield input or just 1)
+        # set the registry values correctly
+        # then run 'sendRegisterValues'
+
+
+    #send the values currently held in registers[]
+    def sendRegisterValues(self):
+        print("Setting Registers")
+        for i in range(0, len(registers)):
+            print(registers[i])
+        try:
+            for i in range(0, len(registers)):
+                ser.write(chr(registers[i]))
+                time.sleep(sleepTime)
+        except:
+            self.txtEditDebugMsg.append("!!! FAILURE SENDING ONE REGISTER TO FPGA - port closed? !!!")
+            print("Could not send command. Port closed?")
+        
+
+def main():
+    app = QtGui.QApplication(sys.argv)  # A new instance of QApplication
+    form = PulserGUI()                  
+    form.show()                         
+    app.exec_()                         # and execute the app
+    ser.close()
+
+if __name__ == '__main__':              # if we're running file directly and not importing it
+    main()                              # run the main function
+
+
+
+#                tmp = chr(int(registers[i]))
+#                print("tmp = ", tmp)
+#                print(" ")
+#                ser.write(tmp)
+#                time.sleep(0.1)

@@ -1,0 +1,812 @@
+<Tags>
+	<Tag name="OCS Wrapper" path="" type="UDT_INST">
+		<Property name="Value"/>
+		<Property name="DataType">2</Property>
+		<Property name="UDTParentType">OCS Wrapper</Property>
+		<Parameters>
+			<Property name="Device Name" type="String">Liver-pool</Property>
+			<Property name="Host User" type="String">user</Property>
+			<Property name="Host Address" type="String">0.0.0.0</Property>
+		</Parameters>
+	<Tag name="Pulse Frequency" path="LED 0" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF6</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 0" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF8</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 0" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR10</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 0" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF11</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 1" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF13</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 1" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF15</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 1" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR17</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 1" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF18</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 2" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF20</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 2" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF22</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 2" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR24</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 2" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF25</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 3" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF27</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 3" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF29</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 3" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR31</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 3" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF32</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 4" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF34</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 4" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF36</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 4" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR38</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 4" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF39</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 5" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF41</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 5" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF43</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 5" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR45</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 5" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF46</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 6" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF48</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 6" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF50</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 6" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR52</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 6" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF53</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 7" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF55</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 7" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF57</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 7" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR59</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 7" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF60</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 8" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF62</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 8" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF64</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 8" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR66</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 8" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF67</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 9" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF69</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 9" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF71</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 9" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR73</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 9" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF74</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 10" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF76</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 10" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF78</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 10" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR80</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 10" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF81</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 11" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF83</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 11" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF85</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 11" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR87</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 11" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF88</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 12" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF90</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 12" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF92</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 12" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR94</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 12" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF95</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 13" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF97</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 13" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF99</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 13" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR101</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 13" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF102</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 14" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF104</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 14" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF106</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 14" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR108</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 14" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF109</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 15" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF111</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 15" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF113</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 15" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR115</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 15" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF116</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 16" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF118</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 16" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF120</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 16" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR122</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 16" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF123</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 17" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF125</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 17" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF127</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 17" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR129</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 17" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF130</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 18" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF132</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 18" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF134</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 18" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR136</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 18" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF137</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 19" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF139</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 19" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF141</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 19" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR143</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 19" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF144</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 20" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF146</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 20" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF148</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 20" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR150</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 20" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF151</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 21" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF153</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 21" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF155</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 21" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR157</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 21" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF158</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 22" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF160</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 22" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF162</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 22" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR164</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 22" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF165</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 23" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF167</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 23" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF169</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 23" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR171</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 23" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF172</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 24" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF174</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 24" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF176</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 24" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR178</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 24" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF179</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 25" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF181</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 25" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF183</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 25" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR185</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 25" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF186</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 26" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF188</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 26" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF190</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 26" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR192</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 26" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF193</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 27" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF195</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 27" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF197</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 27" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR199</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 27" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF200</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 28" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF202</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 28" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF204</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 28" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR206</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 28" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF207</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 29" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF209</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 29" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF211</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 29" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR213</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 29" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF214</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 30" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF216</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 30" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF218</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 30" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR220</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 30" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF221</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 31" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF223</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 31" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF225</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 31" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR227</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 31" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF228</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 32" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF230</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 32" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF232</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 32" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR234</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 32" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF235</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 33" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF237</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 33" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF239</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 33" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR241</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 33" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF242</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 34" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF244</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 34" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF246</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 34" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR248</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 34" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF249</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 35" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF251</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 35" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF253</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 35" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR255</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 35" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF256</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 36" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF258</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 36" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF260</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 36" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR262</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 36" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF263</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 37" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF265</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 37" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF267</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 37" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR269</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 37" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF270</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 38" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF272</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 38" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF274</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 38" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR276</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 38" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF277</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Frequency" path="LED 39" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF279</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Pulse Width" path="LED 39" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF281</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="Switch" path="LED 39" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HR283</Property>
+		</Parameters>
+	</Tag>
+	<Tag name="PhDoutput" path="LED 39" type="EXTENSION">
+		<Parameters>
+			<Property name="opc_path" type="String">[{Device Name}]1.HRF284</Property>
+		</Parameters>
+	</Tag>
+
+</Tag></Tags>

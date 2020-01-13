@@ -1,0 +1,12 @@
+/s	server_id	Name	Description	Port							
+/s	1	Server	1	5521							
+											
+/u	nodeID	serverID	Name	Description	MB ID						
+/u	1	1	ST	U1	1						
+											
+/c	channelID	unitID	Name	Description	Reverse word order	Channel Datatype	MB starting add	MB length	MB type	Behavior	command
+/c	1	1	TotalexecutionTime		FALSE	FLOAT	0	2	HOLDING_REGISTERS	wrappermanager	totalexecutiontime
+/c	2	1	Timeperchannel		FALSE	FLOAT	2	2	HOLDING_REGISTERS	wrappermanager	executiontimeperchannel
+/c	3	1	Nchannels		FALSE	FLOAT	4	2	HOLDING_REGISTERS	wrappermanager	nchannels
+/c	4	1	Killwrapper		FALSE	BOOL	6	1	COILS	wrappermanager	killwrapper
+/c	5	1	LastLog		FALSE	STRING	7	100	HOLDING_REGISTERS	wrappermanager	lastlog
